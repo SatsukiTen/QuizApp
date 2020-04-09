@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:text="トータルスコア : 333"
         android:textSize="20sp"
-        android:layout_margineTop="60dp"/>
+        android:layout_marginTop="60dp"/>
 
     <Button
         android:layout_width="140dp"
@@ -38,6 +38,6 @@
         android:text="もどる"
         android:textSize="18sp"
         android:layout_marginTop="80dp"
-        android:onClick="resultTop" />
+        android:onClick="returnTop" />
 
 </LinearLayout>

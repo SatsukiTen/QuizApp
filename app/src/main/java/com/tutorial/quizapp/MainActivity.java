@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -71,5 +73,39 @@ public class MainActivity extends AppCompatActivity {
             //tmpArrayをquizArrayに追加する
             quizArray.add(tmpArray);
         }
+        showNextQuiz();
+    }
+
+    public void showNextQuiz(){
+        //クイズカウントラベルを更新
+        countLabel.setText("Q" + quizCount);
+
+        //ランダムな数字を取得
+        Random random = new Random();
+        int randomNum = random.nextInt(quizArray.size());//0～クイズ数-1
+
+        //randomNumを使って、quizArrayからクイズを一つ取り出す
+        ArrayList<String> quiz = quizArray.get(randomNum);
+
+        //問題文（都道府県名）を表示
+        questionLabel.setText(quiz.get(0));
+
+        //正解をrightAnswerにセット
+        rightAnswer = quiz.get(1);
+
+        //クイズ配列から問題文（都道府県名）を削除
+        quiz.remove(0);
+
+        //正解と選択肢３つをシャッフル
+        Collections.shuffle(quiz);
+
+        //回答ボタンに正解と選択肢３つを表示
+        answerBtn1.setText(quiz.get(0));
+        answerBtn2.setText(quiz.get(1));
+        answerBtn3.setText(quiz.get(2));
+        answerBtn4.setText(quiz.get(3));
+
+        //このクイズをquizArrayから削除
+        quizArray.remove(randomNum);
     }
 }
